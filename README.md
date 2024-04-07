@@ -5,20 +5,15 @@
 ## Table of content
 
 - [Theme of The Hackathon](#theme-of-the-hackathon)
-- [Before You Start Coding](#before-you-start-coding)
-  - [Obtain an OpenAI API Key from the Hackathon Organizers](#obtain-an-openai-api-key-from-the-hackathon-organizers)
-  - [Know each other's strength](#know-each-others-strength)
-- [Get Started](#get-started)
-  - [The Prototype Overview](#the-prototype-overview)
-  - [Installation](#installation)
+  - [About the Application](#start-the-application)
   - [Start the Application](#start-the-application)
 - [Walkthrough of Code](#walkthrough-of-code)
-  - [app.py file](#apppy-file)
+  - [advisor_app.py file](#advisor_apppy-file)
   - [llm.py file](#llmpy-file)
-- [Ideal Team Structure](#ideal-team-structure)
+- [Team Structure](#ideal-team-structure)
 - [FAQ](#faq)
 - [Potential Ideas and Directions](#potential-ideas-and-directions)
-  - [Choose a Domain of Application](#choose-a-domain-of-application)
+  - [Domain of Application](#choose-a-domain-of-application)
   - [Technical Improvements](#technical-improvements)
 - [Credits](#credit)
 
@@ -33,130 +28,97 @@ For example, ChatGPT is one of the most popular LLMs. It is based on the GPT-3 m
 </p>
 
 
-Meanwhile, building an LLM application is becoming more and more accessible. The goal of this hackathon is to build a prototype of an LLM application that can be used to solve a real-world problem. The modern tools like Langchain, Huggingface, and OpenAI are very helpful to build such an application.On another hand, libraries like Streamlit can be used to create a user-friendly interface for the application, which significantly reduces the idea-to-prototype time.
+Meanwhile, building an LLM application is becoming more and more accessible. The goal of this hackathon is to build a prototype of an LLM application that can be used to solve a real-world problem. The modern tools like Langchain, Huggingface, and OpenAI are very helpful to build such an application. On another hand, libraries like Streamlit can be used to create a user-friendly interface for the application, which significantly reduces the idea-to-prototype time.
+
+## About the Application
+
+Mental Health Advisor Web App
+This repository contains code for a Mental Health Advisor web application developed during a hackathon focused on LLM + Impactful Creativity themes and technologies. The application utilizes Streamlit for the frontend and leverages OpenAI's large language models (LLMs) for text processing and analysis.
+
+Key Features
+1.	File Upload: Users can upload a text file containing their responses, allowing the app to analyze and provide personalized recommendations.
+2.	AI-powered Analysis: The app uses OpenAI's LLMs to process and analyze user-provided text, such as personal descriptions and feelings.
+3.	Personalized Recommendations: Based on the user's input, the app generates personalized recommendations for literature, series, emergency numbers, and websites to improve mental health.
+4.	User Interaction: Users can interact with the app by clicking on different buttons to access specific types of recommendations tailored to their needs.
+
+Implementation Details
+•	The application is built using Python and Streamlit for the frontend.
+•	OpenAI's LLMs are integrated to process and analyze user-provided text data.
+•	The app provides a user-friendly interface for uploading files, receiving recommendations, and displaying relevant information.
+•	Recommendations are generated dynamically based on the user's input and are aimed at promoting mental well-being and providing support.
+
+Usage
+1.	Clone the repository to your local machine.
+2.	Install the required dependencies using pip install -r requirements.txt.
+3.	Run the app using streamlit run advisor_app.py.
+4.	Answer the initial questionnaire to receive personalized recommendations.
+5.	Upload a text file with your responses to get tailored advice and recommendations.
 
 
-## Before You Start Coding
+Additional File: Initial Questionnaire and Chat History
+The repository also includes a file named initial_questionnaire.py, which handles the initial questionnaire process. Users are asked a series of questions about their demographics, mental state, and areas of concern. Their responses are stored in a chat history file (chat_history.txt), which can be downloaded for reference or further analysis.
 
-### Obtain an OpenAI API Key from the Hackathon Organizers
+Disclaimer
+This application is designed for educational and informational purposes only. It does not provide medical advice, diagnosis, or treatment. Users are encouraged to seek professional help for any mental health concerns.
 
-When you start working this prototype, one of your teammate should reach out to the hackathon organizers to get the OpenAI API key. This key is required to use the OpenAI GPT models. Each team will only get one key and the key is valid for the duration of the hackathon.
-
-### Know each other's strength
-
-Before you start coding, it is important to know each other's strength. For example, if you have a teammate who is good at front-end development, you can assign them to work on the user interface. If you have a teammate who is good at natural language processing, you can assign them to work on the prompt engineering. Knowing each other's strength will help you to work more efficiently and produce a better prototype.
-
-## Get Started
-
-### The Prototype Overview
-
-The prototype is a simple application that reads the PDF and splits the text into smaller chunks that can be then fed into a LLM. It uses OpenAI embeddings to create vector representations of the chunks. The application then finds the chunks that are semantically similar to the question that the user asked and feeds those chunks to the LLM to generate a response.
-
-The application uses Streamlit to create the GUI and Langchain to deal with the LLM.
-
-
-### Installation
-
-To install the repository, please clone this repository and install the requirements:
-
-#### Create a virtual environment (optional)
-
-This step is optional but it is highly encouraged. If you are not using other virtual environment management tools. Feel free to use them too. 
-
-Suppose you use the built-in Python virtual environment management module, let's call this virtual env `hack`
-
-```
-python3 -m venv hack
-
-```
-
-After creating the virtual environment, activate it:
-
-```
-source hack/bin/activate
-```
-If you want to deactivate the virtual environment, you can run:
-
-```
-deactivate
-```
-Then install the requirements:
-
-```
-pip3 install -r requirements.txt
-```
-
-You will also need to add the OpenAI API key to the `.env` file. If the file doesn't exist, create it. It should look like this:
-
-```
-OPENAI_API_KEY="your_api_key"
-```
 
 ### Start the Application
 
 To use the application, run the `main.py` file with the streamlit CLI (after having installed streamlit): 
 
 ```
-streamlit run app.py
+streamlit run advisor_app.py
 ```
 
-After a few seconds, a new tab will open in your default browser with the application running. You can then use the application to ask questions and get answers.
-
-![Homepage](./img/homepage.png)
-
-There are some PDF files in the `pdfs` directory that you can use to test the application. You can also upload your own PDF files to test the application.
-
-For example, if I upload the BC's math [curriculum](./pdfs/en_mathematics_10_foundations-of-mathematics-and-pre-calculus_elab.pdf) for grade 10 PDF and ask what is this file about.
-
-![Ask File](./img/ask_file.png)
-
-And in the terminal, you can see that how much does it cost to generate the answer.
-
-![cost](./img/cost.png)
-
-
-> Please refrain from using more expensive model like GPT-4 (set in llm.py) before you validate your prototype. The cost of using the expensive models can be very high and it can quickly consume your credit.
-
-1. The PDF must be typed. Scanned PDFs are in general not supported.
-2. PDFs must have a clean structure. If the PDF has a lot of images, tables, or other non-text elements, the application may not work as expected.
+After a few seconds, a new tab will open in your default browser with the application running. You can then use the application to get the information about your Mental Health.
 
 
 ## Walkthrough of Code
 
 Now let's walk through the code. You may be suprised that the code is very simple.
 
-There are two main files: the [app.py](./app.py) and the [llm.py](./tool/llm.py) file. 
+There are two main files: the [advisor_app](./advisor_app) and the [llm.py](./tool/llm.py) file. 
 
-The `app.py` file contains the Streamlit application. It is a simple application that allows the user to upload a PDF file and ask questions about the content of the PDF file. The application then uses the `llm.py` file to find the answer to the question.
+The `advisor_app.py` file contains the Streamlit application. The application then uses the `llm.py` file to communicate with OpenAI to get the information.
 
 
-### app.py file
+### advisor_app.py file
 
-Let's look at the `app.py` file first.
+What's in the advisor_app.py?
 
-The `get_openai_key` function and the `get_pdf_text` function are used to get the OpenAI API key and the text from the PDF file, respectively. The `get_openai_key` function reads the OpenAI API key from the `.env` file and the `get_pdf_text` function uses the `PyPDF2` library to read the text from the PDF file.
+1.	Import Statements:
+•	The file starts with necessary import statements, including Streamlit (streamlit), dotenv (dotenv), and other modules required for text processing and AI integration.
 
-The `st_first` function is the function that initializes the application's UI. It creates the user interface using the Streamlit library. Yes, only 2 lines and you have a user interface. `st` stands for `streamlit`. The `st.set_page_config` function is used to set the title of the application and the `st.header` function is used to create a header in the application.
+2.	API Key Retrieval:
+•	There is a function get_openai_key() to retrieve the OpenAI API key from the environment variables using dotenv.
 
-The best thing about Streamlit is that you can create a user interface elements interleaved with the Python code. For example, the `st.file_uploader` function in the `main` function is used to create a file uploader in the application. The `st.text_input` function, also in the `main` function is used to create a text input area in the application to read from the user.
+3.	Text Processing Functions:
+•	get_text(text_file) function reads and decodes text from a provided text file.
+•	get_text_chunks(text) function splits the text into smaller chunks for processing.
 
-The second best thing about Streamlit is that it is automatically `reactive`. You can just program the UI elements as normal Python variables and any variable's change will automatically update the UI. You can run the [st_example.py](./examples/st_example.py) file and see how the UI elements are updated automatically if you change anything on the side bar.
+4.	Streamlit Configuration:
+•	The st_first() function configures the Streamlit app's initial settings, such as page title, icon, and header.
 
-> It is advised to assign one of your team member to work on the streamlit UI elements and the other to work on the backend. This way, you can work in parallel and save time. There are tons of streamlit examples on the internet. A good start place to look for inspirations is the [streamlit gallery](https://streamlit.io/gallery).
+5.	Main Function:
+•	The main() function is the core of the application.
+•	It calls st_first() to set up the Streamlit app.
+•	It includes a file uploader (st.file_uploader) to allow users to upload a text file containing their responses.
+•	Upon file upload, the app processes the text using OpenAI's language models and generates personalized recommendations based on the user's input.
 
-Let's continue with the `app.py` file. 
+6.	Recommendation Buttons:
+•	The app provides buttons for different types of recommendations, such as literature, series, emergency numbers, and websites.
+•	Each button click triggers the generation of specific recommendations based on the uploaded text and user preferences.
 
-From line 47 to line 51, we split the text into smaller chunks and created an `embedding` object using `OpenAIEmbeddings` class. An embedding is essentially a vector representation of the text. We then find the chunks that are semantically similar to the question that the user asked and feed those chunks to the LLM to generate a response.
+7.	Download Button:
+•	The app includes a download button (st.download_button) to allow users to download the chat history file containing their responses.
 
-FAISS is short for Facebook AI Similarity Search. It is a (vectorstore) module in Langchain that is used to find the most similar chunks to the question that the user asked. We apply the `embeddings` to the chunks and created a vector representation of the chunks. It is then stored in a variable called `knowledge_base`.
+8.	Footer and Image Display:
+•	It displays a footer with copyright information and a sad face image using Streamlit's st.image function.
 
-> For more information about FAISS, you can check the [FAISS documentation](https://python.langchain.com/docs/integrations/vectorstores/faiss). Also FAISS is not the only vector store you can use. You can find other vector stores in the Langchain [documentation](https://python.langchain.com/docs/integrations/vectorstores).
+9.	Execution:
+•	The if __name__ == '__main__': block ensures that the main() function is executed when the script is run directly.
+Overall, app.py combines Streamlit's interactive components with OpenAI's language models to create an engaging and personalized mental health advisor experience for users.
 
-Line 53 asks for user's question and stores it in a variable called `user_question`.
-
-Line 55 is a direct similarity search between the user's input and the knowledge_base. The `docs` variable is not used in the application because we are going to use the llm engine to generate a better answer (and pay for that!). However, you may use the `docs` variable in your own application. To see how to use the `docs` variable,  check out the [query](https://python.langchain.com/docs/integrations/vectorstores/faiss#querying) section on the documentation page.
-
-Now let's explore line 56 to line 60. We are stepping into the `llm.py` file.
 
 ### llm.py file
 
@@ -172,69 +134,17 @@ Both methods create a `prompt_template` variable. This is where prompt engineeri
 
 The difference between `get_qa_chain` and `get_history_chain` is that the `get_qa_chain` method only asks one question and gets one answer. The `get_history_chain` method need to take the history of the chats, as a list, as an input. If you use the `get_history_chain` method, you need to keep track of the history of the chats and pass it to the `chain()` call at line 58.
 
-The [history_example](./examples/history_example.py) file is a good example of how to use the `get_history_chain` method. It also includes some new content about using streamlit and vector store. 
 
-![apple](./img/apple.png)
+## Team Structure
 
-1. It shows how to save and load the vectorstore locally
-2. It uses `streamlit_chat` to simulate a chat window
-3. It demonstrates how to read from a non-PDF file. In this case, a CSV file.
-4. It utilizes the streamlit session state to keep track of the history of the chats.
-
-> If you are aiming to build a chatbot, definitely study the [history_example](./examples/history_example.py) file. 
-
-Now back to the `app.py` file.
-
-### app.py file (continued)
-
-Line 57 of `get_openai_callback` is a context manager that allows you to print out the response from the API endpoint, so you can monitor the response from the OpenAI API: how many tokens are used, how much does it cost, and what is wrong if the response is not as expected.
-
-Line 60 writes the actual response to the UI
-
-## Ideal Team Structure
-
-Ideally your team should contain at least 3 members.
-
-1. The Front End Guy
-2. The LLM Guy
-3. The Product Guy
-
-The Front End Guy is responsible for creating the user interface using Streamlit. The LLM Guy is responsible for creating the LLM engine using Langchain. The Product Guy is responsible for coming up with the idea and the use case of the application. The Product Guy is also responsible for searching for valid resources to test and demo the application.
+1. Full-Stack Developer - Jhonny Condemarin
+2. Full-Stack Developer - Camilo Acevedo
+3. Product Manager && Prompt Engineer - Sofia Carrillo
 
 
-## FAQ
+### Domain of Application
 
-Q1: What's a `chain`? 
-
-Great question! In plain words, a chain is a sequence of interconnected components designed to execute tasks in a specific order. There are many many chains in Langchain. For details, please vist the [Langchain Chain Documentation](https://python.langchain.com/docs/modules/chains/).
-
-> It is strongly advised *not* to go too deep into this rabbit hole. Focus on the task at hand and only learn what you need to know.
-
-Q2: How do `RetrievalQA` and `ConversationalRetrievalChain` work? If we have llm, why do llm and vector store work together?
-
-For RetrievalQA,
-
-> The RetrievalQA chain first does a retrieval (from `knowledge_base`) step to fetch relevant documents, then passes those documents into an LLM to generate a respoinse. Here the documents mean the splitted chunks that stored in the `knowledge_base`.
-
-For ConversationalRetrievalChain,
-
-> The ConversationalRetrievalChain chain can be used to have conversations with a document. It takes in a question and (optional) previous conversation history. If there is previous conversation history, it uses an LLM to rewrite the conversation into a query to send to a retriever (otherwise it just uses the newest user input). It then fetches those documents and passes them (along with the conversation) to an LLM to respond.
-
-Q3: Can I tune the FAISS parameters?
-
-> Yes. You can try other vector stores too.
-
-
-## Potential Ideas and directions
-
-Note that there are literally infinitely many ways to build on top of the prototype. However, you should always start with a simple idea and then iterate on it. Here are some potential ideas and directions:
-
-### Choose A Domain of Application
-
-1. Read tax files and immigration law documents to build an AI assistant.
-2. Read from real-time APIs to generate weather or traffic or news information.
-3. Built a personal assistant that can schedule meetings automatically by reading emails to handle time conflicts.
-4. Many many others 
+1. Mental Health support tool that can automatically provide recommendations by reading your profile, which is evaluated based on specific questions. Please note: this should not replace real therapy
 
 ### Technical Improvements
 
@@ -242,12 +152,11 @@ Note that there are literally infinitely many ways to build on top of the protot
 2. The prompt engineering can be much more sophisticated.
 3. The UI can be improved significantly.
 4. Fine-tune the API calls and the text splitter.
-5. Many many others.
+5. Integrate the initial questionnaire with the app
+6. Many many others.
 
 ## Credit
 
 The prototype was based on an early version of this [project](https://github.com/wsy258-strar/DocGPT). It is then customized for learning purposes.
-
-The [history_example](./examples/history_example.py) file is modified based on this medium [post](https://medium.com/@anoopjohny2000/building-a-conversational-chat-interface-with-streamlit-and-langchain-for-csvs-8c150b1f982d).
 
 Thanks go to the authors for their great work.
