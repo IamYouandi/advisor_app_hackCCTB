@@ -49,13 +49,13 @@ for question in questions:
 # If all questions have been asked and responses received
 if len(responses) == len(questions):
     # Open the text file and write the questions and responses to it
-    with open('chat_history.txt', 'w') as f:
+    with open('texts\chat_history.txt', 'w') as f:
         for question, response in responses.items():
             f.write(f"{question}\n{response}\n\n")
 
 
 # Provide a download link for the chat history file
-    st.download_button(label="Download chat history", data=open('chat_history.txt', 'r'), file_name='responses.txt',
+    st.download_button(label="Download chat history", data=open('texts\chat_history.txt', 'r'), file_name='responses.txt',
                        mime='text/plain')
 
 col1, col2, col3 = st.columns([1, 2, 1])
