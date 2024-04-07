@@ -1,0 +1,33 @@
+Name:
+sdf
+
+Age:
+34
+
+Gender:
+Male
+
+Job/Occupation:
+werer
+
+Marital Status:
+Single
+
+How are you feeling today? Is there anything specific on your mind?
+werwer
+
+Have you been experiencing any changes in your mood or behavior recently?
+werwer
+
+What do you think might be contributing to your current feelings or struggles?
+werwer
+
+Have there been any periods in your life where you've struggled with your mental well-being?
+werwer
+
+Are there any specific areas of your life where you feel you need more support?
+ewrw
+
+Do you feel like your emotions are interfering with your ability to focus or concentrate on tasks?
+sdfdf
+
