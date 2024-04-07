@@ -1,0 +1,18 @@
+Name: 
+Age: 
+Gender: 
+Job/Occupation: 
+Marital Status:
+Location:
+
+1.How are you feeling today? Is there anything specific on your mind?
+
+2.Have you been experiencing any changes in your mood or behavior recently?
+
+3.What do you think might be contributing to your current feelings or struggles?
+
+4.Have there been any periods in your life where you've struggled with your mental well-being?
+
+5.Are there any specific areas of your life where you feel you need more support?
+
+6.Do you feel like your emotions are interfering with your ability to focus or concentrate on tasks?
